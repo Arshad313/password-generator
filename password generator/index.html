@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password generator</title>
+</head>
+<body>
+    <h1>Password generator</h1>
+    <div class="container">
+
+        <input type="text" id="pass">
+        <button onclick="generatepassword()">Add password</button>
+    </div>
+
+
+    <script >
+
+        const passwordBox = document.getElementById("pass");
+        const length = 12;
+
+        const up = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+        const lp = "abcdefghijklmnopqrstuvwxyz";
+        const nm = "0123456789";
+        const sy =  "~!@#$%^&*()";
+
+        const allchar = up + lp + nm + sy;
+        
+        function generatepassword(){
+
+            let password = "";
+            password += up[Math.floor(Math.random() * up.length)];
+            password += lp[Math.floor(Math.random() * lp.length)];
+            password += nm[Math.floor(Math.random() * nm.length)];
+            password += sy[Math.floor(Math.random() * sy.length)];
+
+            while(length > password.length){
+                password += allchar[Math.floor(Math.random() * allchar.length)];
+
+            }
+
+            passwordBox.value = password;
+        }
+    </script>
+</body>
+</html>
